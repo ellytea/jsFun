@@ -477,7 +477,11 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
+<<<<<<< HEAD
     const result = [{'B':'flipflop'}, {'A': undefined}, {'C':'flipflop'}];
+=======
+    const result = [{'B':'flipflop'}, {'A': 'undefined'}, {'C':'flipflop'}];
+>>>>>>> 9ba419b729dc5a3df6cc95fba08ffff65a19462c
     return result;
 
     // Annotation:
@@ -540,7 +544,11 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
+<<<<<<< HEAD
     const result = [{'A':'Pandora'}, {'B':['Antigone', 'Pandora']}, {'C':'Mandy'}, {'D':'Antigone'}, {'E':'Pandora'}];
+=======
+    const result = [{'A':'Pandora'}, {'B':['Antigone', 'Pandora']}, {'C':'Mandy'}, {'D':['Antigone ']}, {'E':'Pandora'}];
+>>>>>>> 9ba419b729dc5a3df6cc95fba08ffff65a19462c
     return result;
 
     // Annotation:
