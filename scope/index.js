@@ -503,6 +503,7 @@ const scope = {
 
     // Log C: lunch
 
+
     const result = [{'B':'soup'}, {'C':'soup'}];
     return result;
 
