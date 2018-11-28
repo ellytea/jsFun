@@ -503,11 +503,11 @@ const scope = {
 
     // Log C: lunch
 
-    const result = [{'A': undefined}, {'B': undefined}, {'C': undefined}];
+    const result = [{'B':'soup'}, {'C':'soup'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // this is correct!
   },
 
   exerciseQ(){
@@ -540,7 +540,7 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':'Pandora'}, {'B':['Antigone', 'Pandora']}, {'C':'Mandy'}, {'D':['Antigone ']}, {'E':'Pandora'}];
     return result;
 
     // Annotation:
@@ -567,18 +567,13 @@ const scope = {
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':'Rody'}, {'B':'RodyToy'}, {'C':'Tesla'}, {'D':'RodyToyDaniels'}];
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
 
-    const result = [{'A':'Rody'}, {'B':'RodyToy'}, {'C':'Tesla'}, {'D':'RodyToyDaniels'}];
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
 };
 
 module.exports = scope;
