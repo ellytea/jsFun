@@ -23,7 +23,11 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter((kitten) => {
+        return kitten.color === 'orange'
+        }).map((cat) => { 
+        return cat.name;
+        });    
     return result;
 
     // Annotation:
@@ -33,7 +37,9 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => {
+        return b.age - a.age;
+        });
     return result;
 
     // Annotation:
@@ -54,7 +60,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map((cat) => {
+        cat.age += 2;
+        return cat;
+        });;
     return result;
   }
 };
@@ -122,11 +131,17 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map((mod) => {
+        return { mod: mod.mod,
+            studentsPerInstructor: mod.students / mod.instructors
+        };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I used map because I wanted a similar array of the same
+    // length. I returned an object for each iteration with new
+    // keys and studentsPerInstructor to have a new value.
   }
 };
 
