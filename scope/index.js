@@ -544,6 +544,10 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Add prototype  methods
     const result = [{'A':'Pandora'}, {'B':['Antigone', 'Pandora']}, {'C':'Mandy'}, {'D':'Antigone'}, {'E':'Pandora'}];
     return result;
 

@@ -63,7 +63,7 @@ const kittyPrompts = {
     const result = kitties.map((cat) => {
         cat.age += 2;
         return cat;
-        });;
+    });;
     return result;
   }
 };
@@ -133,7 +133,7 @@ const modPrompts = {
 
     const result = mods.map((mod) => {
         return { mod: mod.mod,
-            studentsPerInstructor: mod.students / mod.instructors
+        studentsPerInstructor: mod.students / mod.instructors
         };
     });
     return result;
@@ -172,7 +172,9 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((cake) => {
+        return {flavor: cake.cakeFlavor, inStock: cake.inStock}
+    });;
     return result;
 
     // Annotation:
@@ -200,7 +202,9 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake) => {
+        return cake.inStock > 0
+    });;
     return result;
 
     // Annotation:
@@ -211,7 +215,10 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+        acc += cake.inStock;
+        return acc;
+    }, 0);
     return result;
 
     // Annotation:
@@ -223,7 +230,13 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((toppings, cake) => {
+        cake.toppings.forEach((topping) => {
+        if (toppings.indexOf(topping) === -1) {
+        toppings.push(topping) } 
+        })
+        return toppings;
+    }, []);;
     return result;
 
     // Annotation:
@@ -241,7 +254,16 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((obj, cake) => {
+        cake.toppings.forEach((topping) => {
+        if (!obj[topping]) {
+        obj[topping] = 1
+        } else {
+        obj[topping]++;
+        }
+        });
+        return obj;
+    }, {});
     return result;
 
     // Annotation:
