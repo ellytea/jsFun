@@ -16,7 +16,10 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
+<<<<<<< HEAD
 
+=======
+>>>>>>> Add more context
     const result = 'global window object';
     return result;
 

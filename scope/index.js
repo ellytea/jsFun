@@ -503,7 +503,10 @@ const scope = {
 
     // Log C: lunch
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Add more context
     const result = [{'B':'soup'}, {'C':'soup'}];
     return result;
 
