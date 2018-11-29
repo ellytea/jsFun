@@ -95,7 +95,16 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((obj, club) => {
+      club.members.forEach((member) => {
+        if (Object.keys(obj).indexOf(member) > -1) {
+          obj[member].push(club.club)
+        } else {
+          obj[member] = [club.club]
+        }
+      });
+      return obj;
+    }, {});
     return result;
 
     // Annotation:
@@ -174,7 +183,7 @@ const cakePrompts = {
 
     const result = cakes.map((cake) => {
         return {flavor: cake.cakeFlavor, inStock: cake.inStock}
-    });;
+    });
     return result;
 
     // Annotation:
@@ -204,7 +213,7 @@ const cakePrompts = {
 
     const result = cakes.filter((cake) => {
         return cake.inStock > 0
-    });;
+    });
     return result;
 
     // Annotation:
@@ -236,7 +245,7 @@ const cakePrompts = {
         toppings.push(topping) } 
         })
         return toppings;
-    }, []);;
+    }, []);
     return result;
 
     // Annotation:
@@ -298,7 +307,9 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter((classroom) => {
+      return classroom.program === 'FE'
+    });
     return result;
 
     // Annotation:
@@ -313,7 +324,14 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, classroom) => {
+      if (classroom.program === 'BE') {
+        acc.beCapacity += classroom.capacity
+      } else {
+        acc.feCapacity += classroom.capacity
+      }
+      return acc;
+    }, {feCapacity: 0, beCapacity: 0});
     return result;
 
     // Annotation:
@@ -323,7 +341,9 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+      return a.capacity - b.capacity
+    });
     return result;
 
     // Annotation:
@@ -353,7 +373,10 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((beers, brewery) => {
+      beers += brewery.beers.length;
+      return beers;
+    }, 0);
     return result;
 
     // Annotation:
@@ -369,7 +392,12 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map((brewery) => {
+      return {
+        name: brewery.name,
+        beerCount: brewery.beers.length
+      }
+    });
     return result;
 
     // Annotation:
@@ -381,7 +409,14 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      let found = brewery.beers.find((beer) => {
+        return beer.abv > 10.5;
+      });
+      if (found) acc.push(found)
+      return acc;
+    }, []);
+    
     return result;
 
     // Annotation:
@@ -429,7 +464,15 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map((instructor) => {
+      let matching = cohorts.find((cohort) => {
+        return cohort.module === instructor.module;
+      });
+
+      let numOfStudents = matching.studentCount;
+
+      return { name: instructor.name, studentCount: numOfStudents }
+    });
     return result;
 
     // Annotation:
