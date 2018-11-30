@@ -486,7 +486,13 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((obj, cohort) => {
+      let matchingMod = instructors.filter((instructor) => {
+        return instructor.module === cohort.module;
+      });
+      obj['cohort' + cohort.cohort] = cohort.studentCount / matchingMod.length;
+      return obj;
+    }, {});
     return result;
 
     // Annotation:
@@ -503,7 +509,17 @@ const turingPrompts = {
     //   Pam: [2, 4]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((obj, instructor) => {
+      obj[instructor.name] = [];
+      instructor.teaches.forEach((skill) => {
+        cohorts.forEach((cohort) => {
+          if (cohort.curriculum.includes(skill) && !obj[instructor.name].includes(cohort.module)) {
+            obj[instructor.name].push(cohort.module)
+          }
+        });
+      });
+      return obj;
+    }, {});
     return result;
 
     // Annotation:
@@ -520,7 +536,17 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((obj, cohort) => {
+      cohort.curriculum.forEach((subject) => {
+        obj[subject]= [];
+        instructors.forEach((instructor) => {
+          if (instructor.teaches.includes(subject)) {
+            obj[subject].push(instructor.name);
+          }
+        });
+      });
+      return obj;
+    }, {});
     return result;
 
     // Annotation:
@@ -555,7 +581,16 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(bosses).reduce((array, boss) => {
+      let name = bosses[boss].name;
+      let loyaltySum = sidekicks.filter(sidekick => {
+        return sidekick.boss === name;
+      }).reduce((sum, sidekick) => {
+        return sum += sidekick.loyaltyToBoss;
+      }, 0)
+      array.push({bossName: name, sidekickLoyalty: loyaltySum})
+      return array;
+    }, []);
     return result;
 
     // Annotation:
