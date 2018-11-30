@@ -184,6 +184,7 @@ const cakePrompts = {
     const result = cakes.map((cake) => {
         return {flavor: cake.cakeFlavor, inStock: cake.inStock}
     });
+
     return result;
 
     // Annotation:
@@ -214,6 +215,7 @@ const cakePrompts = {
     const result = cakes.filter((cake) => {
         return cake.inStock > 0
     });
+
     return result;
 
     // Annotation:
@@ -246,6 +248,7 @@ const cakePrompts = {
         })
         return toppings;
     }, []);
+
     return result;
 
     // Annotation:
