@@ -411,11 +411,11 @@ const breweryPrompts = {
 
     const result = breweries.reduce((acc, brewery) => {
       let found = brewery.beers.find((beer) => {
-        return beer.abv > 10.5;
+        acc = beer;
+        return beer.abv === 10.9
       });
-      if (found) acc.push(found)
       return acc;
-    }, []);
+    }, {})
     
     return result;
 
